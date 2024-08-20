@@ -15,7 +15,7 @@
 //     **    **
 //     *      *
 
-public class p21 {
+public class p22 {
     public static void main(String[] args) {
         // pattren -1
         int n = 5;
