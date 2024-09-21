@@ -1,25 +1,35 @@
-//WAP to find a factorial of a given integer (iterative and recursive) 
+class p4{
+  public static void main(String[] args) {
+      int n =14;
+      boolean isUgly = true;
 
-public class p4 {
-    public static void main(String[] args) {
-        
-       System.out.println(withoutRecursive(5));
-       System.out.println(withRecursive(5));
-    }
+      for(int i=2;i<= n;i++){
+          if(n%i == 0){
+              if(isPrime(i)){
+                  if(i != 2 && i != 3 && i !=5){
+                     isUgly = false;
+                     break;
+                  }
+              }
+          }
 
-    public static int  withoutRecursive(int n){
-        int f=1;
-        for(int i=1;i<=n;i++){
-          f *= i;
-        }
+          if(isUgly){
+              System.out.println("is ugly num");
+          }else{
+              System.out.println("is not ugly number");
+          }
+      }
 
-        return f;
+     
   }
 
-  public static int  withRecursive(int n){
-      if(n <= 1) return 1;
+  public static boolean isPrime(int n){
+      for(int i=2;i<n;i++){
+          if(n%i == 0){
+              return false;
+          }
+      }
 
-      return n * withRecursive(n-1);
-      
-}
+      return true;
+  }
 }

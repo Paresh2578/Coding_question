@@ -1,29 +1,17 @@
-//WAP to find a Factor of a given number (iterative and recursive) 
-
 class p3{
     public static void main(String[] args) {
-        int n = 10;
+        int h=12,m=30;
 
-        withoutRecursive(n);
-        withRecursive(n, 1);
-    }
+        double m_ungle = m*6;
+        double h_angle = h*30 + (m*0.5);
 
-    public static void  withoutRecursive(int n){
-          for(int i=1;i<=n;i++){
-            if(n%i == 0){
-                System.out.println(i);
-            }
-          }
-    }
 
-    public static void  withRecursive(int n, int i){
-        if(i == n+1) return ;
+        double ans =Math.abs(h_angle - m_ungle);
 
-        if(n%i == 0){
-            System.out.println(i);;
+        if(ans > 180){
+            ans = 360 - ans;
         }
- 
-         withRecursive(n, i+1);
-        
-  }
+
+        System.out.print(ans);
+    }
 }
