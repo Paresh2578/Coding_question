@@ -1,16 +1,18 @@
-class p2{
+//WAP to find whether string is palindrome or not
+import java.util.*;
+public class p2 {
     public static void main(String[] args) {
-        int[] arr = {16,17,4,500,5,2,100,0};
+        Scanner sc = new Scanner(System.in);
 
-        int max = arr[arr.length-1];
+        System.out.println("Enter any String : ");
+        String str = sc.nextLine();
 
-        for(int i=arr.length-1;i>=0;i--){
-            if(arr[i] >= max){
-                System.out.print(arr[i] 
-                + 
-            " ");
+        for(int i = 0; i < str.length()/2; i++){
+            if(str.charAt(i) != str.charAt(str.length()-1-i)){
+                System.out.println("Not Palindrome");
+                return;
             }
-            max = Math.max(max , arr[i]);
         }
+        System.out.println("Palindrome");
     }
 }
