@@ -2,7 +2,7 @@ import java.util.*;
 
 public class p67 {
     public static void main(String[] args) {
-        String exp = "1+2*3/9*0";
+        String exp = "1+2*3/9*2";// 1+2*(0.5)*2
 
         List<Double> digit = new ArrayList<>();
         List<Character> op = new ArrayList<>();
@@ -17,28 +17,49 @@ public class p67 {
 
 
         while (!op.isEmpty()) {
-            char currOp = op.get(0);
-            double num1 = digit.get(0) , num2 = digit.get(1);
-            double ans = 0;
+            char currOp = '+';
+            int opIndex = -1;
 
-           switch(currOp){
-             case '+' : ans = num1+num2;
-             break;
-             case '-' : ans = num1-num2;
-             break;
-             case '*' : ans = num1*num2;
-             break;
-             case '/' : ans = num1/num2;
-             break;
-           }
+            if(op.contains('/')){
+                 opIndex = op.indexOf('/');
+                currOp = '/';
+            }else if(op.contains('*')){
+                opIndex = op.indexOf('*');
+                currOp = '*';
+            }else if(op.contains('+')){
+                opIndex = op.indexOf('+');
+                currOp = '+';
+            }else if(op.contains('-')){
+                opIndex = op.indexOf('-');
+                currOp = '-';
+            }
 
-           // remove two number
-           digit.remove(0);
-           digit.remove(0);
-           op.remove(0);
+            double num1 = digit.get(opIndex) , num2 = digit.get(opIndex+1);
+
+
+
+            //     char currOp = op.get(0);
+            //     double num1 = digit.get(0) , num2 = digit.get(1);
+                double ans = 0;
+
+               switch(currOp){
+                 case '+' : ans = num1+num2;
+                 break;
+                 case '-' : ans = num1-num2;
+                 break;
+                 case '*' : ans = num1*num2;
+                 break;
+                 case '/' : ans = num1/num2;
+                 break;
+               }
+
+            //    // remove two number
+               digit.remove(opIndex);
+               digit.remove(opIndex);
+               op.remove(opIndex);
 
            // append ans
-           digit.add(0, ans);
+           digit.add(opIndex, ans);
         }
 
         System.out.println(digit);
